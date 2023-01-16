@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.project.board.BoardDao">
+
+<select id="boardList" resultType="com.project.board.BoardDto">
+	select * from board
+</select>
+
+<insert id="boardWrite">
+	insert into board(userid, boardtitle, boardcnt) 
+	values(#{userid}, #{boardtitle}, #{boardcnt})
+</insert>
+
+<select id="boarddetail" resultType="com.project.board.BoardDto" parameterType="int">
+	select * from board where boardno=#{boardno}
+</select>
+
+<update id="boardupdate" parameterType="com.project.board.BoardDto">
+	update board set boardcnt=#{boardcnt}, boardtitle=#{boardtitle} where boardno=#{boardno}
+</update>
+
+<delete id="boarddelete" parameterType="int">
+	delete from board where boardno=#{boardno}
+</delete>
+</mapper>
+
